@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+	<meta charset="UTF-8">
+	<title>Angular Intro</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+</head>
+<body>
+<div class="goods-list" ng-controller='ctrl-goods'>
+	<input type="text" ng-model="searchText" placeholder="Search in goods">
+	<table ng-show='showGoods'>
+		<tr>
+			<th>Title</th>
+			<th>Price</th>
+		</tr>
+			<tr ng-repeat='product in goods | filter:searchText'>	
+					<td>{{product.title}}</td>
+					<td>{{product.price}}</td>			
+			</tr>
+
+		<tr>
+			<td><strong>Total goods:</strong> {{getTotalGoods()}}</td>
+		</tr>
+		<tr>
+			<td><button ng-click='addProduct()'>Add product</button></td>
+		</tr>
+	</table>
+	<button ng-click='toggleView()'>Show/hide</button>
+</div>
+<!-- /.goods-list -->
+<div class="customers-list" ng-controller='ctrl-customers'>
+	<input type="text" ng-model="searchText.name" placeholder="Search in customers">
+	<table ng-show='showCustomers'>
+		<tr>
+			<th>Name</th>
+			<th>City</th>
+			<th>Age</th>
+			<th>Avatar</th>
+		</tr>
+			<tr ng-repeat='person in customers | filter:searchText' ng-click='removeItem($index)'>	
+					<td>Пользователь: {{person.name | filterToUpperCase}}</td>
+					<td>{{person.city}}</td>
+					<td>{{person.age}}</td>
+					<td><img ng-src="http://www.gravatar.com/avatar/{{person.avatar}}" alt="Avatars"></td>			
+			</tr>
+
+		<tr>
+			<td><strong>Total customers:</strong> {{getTotalCustomers()}}</td>
+		</tr>
+		<tr>
+			<td><button ng-click='addCustomer()'>Add customer</button></td>
+		</tr>
+	</table>
+	<button ng-click='toggleView()'>Show/hide</button>
+</div>
+<script src="main.js"></script>
+</body>
+</html>

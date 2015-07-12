@@ -1,0 +1,14 @@
+button {
+	border: 1px solid #222;
+	background-color: #FFF;
+	font-size: 16px;
+	cursor: pointer;
+}
+.goods-list,
+.customers-list {
+	width: 400px;
+	float: left;
+}
+table tr td {
+	padding: 5px 10px;
+}
